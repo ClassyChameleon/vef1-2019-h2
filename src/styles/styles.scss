@@ -23,14 +23,16 @@ html { /* stylelint-disable-line */
 
 img { /* stylelint-disable-line */
   max-width: 100%;
+  opacity: 0.6;
 }
 
 .title {
   font-family: $font-title;
   &__h1 {
-    font-size: 2em;
+    font-size: 3em;
   }
 }
 
 // TODO import
 @import "header";
+@import "buttons";

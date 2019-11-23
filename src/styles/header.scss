@@ -7,8 +7,8 @@
     max-width: $max-width;
     padding-left: $gutter;
     padding-right: $gutter;
-    padding-top: $gutter*3;
-    padding-bottom: $gutter*3;
+    padding-top: $gutter*4.5;
+    padding-bottom: $gutter*4.5;
     @media (min-width: $max-width) {
       padding-right: 0;
       padding-left: 0;
