@@ -1,0 +1,22 @@
+@import "config";
+
+.valmynd {
+  background: url(../../img/header.jpg);
+  &__efni {
+    margin: 0 auto;
+    max-width: $max-width;
+    padding-left: $gutter;
+    padding-right: $gutter;
+    padding-top: $gutter*3;
+    padding-bottom: $gutter*3;
+    @media (min-width: $max-width) {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+  &__row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+}

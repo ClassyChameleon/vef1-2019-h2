@@ -25,4 +25,12 @@ img { /* stylelint-disable-line */
   max-width: 100%;
 }
 
+.title {
+  font-family: $font-title;
+  &__h1 {
+    font-size: 2em;
+  }
+}
+
 // TODO import
+@import "header";
