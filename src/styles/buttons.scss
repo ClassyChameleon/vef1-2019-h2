@@ -1,7 +1,7 @@
 @import "config";
 
 .buttons {
-  margin: 0 auto;
+  margin: 0 auto $gutter*2 auto;
   max-width: $max-width;
 
   @media (max-width: $max-width - 1) {
