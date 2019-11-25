@@ -1,0 +1,39 @@
+@import "config";
+
+.lecture {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+
+  cursor: pointer;
+
+  &:hover &__content {
+    background-color: $color-2;
+  }
+
+  &__content {
+    height: inherit;
+    background-color: $color-4;
+    display: flex;
+    align-items: flex-end;
+
+    transition: background-color $transition;
+  }
+
+  &__text {
+    margin: 15px 0 15px 10px;
+  }
+
+  &__type {
+    font-family: $font-heading;
+    font-size: 1rem;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
