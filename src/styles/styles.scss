@@ -1,5 +1,4 @@
 @import "config";
-@import url('https://fonts.googleapis.com/css?family=Lora|Roboto+Mono&display=swap');
 
 * {
   padding: 0;
@@ -26,13 +25,7 @@ img { /* stylelint-disable-line */
   opacity: 0.6;
 }
 
-.title {
-  font-family: $font-title;
-  &__h1 {
-    font-size: 3em;
-  }
-}
-
 // TODO import
 @import "header";
+@import "button";
 @import "buttons";

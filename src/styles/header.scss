@@ -1,22 +1,41 @@
 @import "config";
 
-.valmynd {
-  background: url(../../img/header.jpg);
-  &__efni {
-    margin: 0 auto;
-    max-width: $max-width;
-    padding-left: $gutter;
-    padding-right: $gutter;
-    padding-top: $gutter*4.5;
-    padding-bottom: $gutter*4.5;
-    @media (min-width: $max-width) {
-      padding-right: 0;
-      padding-left: 0;
-    }
-  }
-  &__row {
+.header {
+  // það þarf að gera background-image í javascript því það eru mismunandi myndir fyrir hvern fyrirlestur 
+  background-image: url(../../img/header.jpg);
+
+  margin-bottom: $gutter * 2;
+
+  &__content {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+    max-width: $max-width;
+    margin: 0 auto;
+    flex-direction: column;
+
+    margin-top: $gutter * 4;
+    margin-bottom: $gutter * 4;
+  }
+
+  &__title {
+    margin-bottom: $gutter;
+
+    font-family: $font-heading;
+    font-size: 3rem;
+    font-weight: bold;
+
+    text-align: center;
+  }
+
+  &__undertitle {
+    font-family: $font-heading;
+    font-size: 1rem;
+    font-weight: normal;
+
+    text-align: center;
+  }
+
+  &__row {
+    @include row;
+    flex-wrap: wrap;
   }
 }
