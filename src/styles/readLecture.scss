@@ -1,0 +1,67 @@
+@import "config";
+
+.readLecture {
+  max-width: $max-width;
+  margin: 0 auto;
+
+  @media (max-width: $max-width - 1) {
+    padding-right: $gutter;
+    padding-left: $gutter;
+  }
+
+  &__row {
+    @include row;
+    margin-bottom: $gutter * 2;
+    flex-wrap: wrap;
+  }
+
+  &__col {
+    @include columns(12);
+    margin-bottom: $gutter * 2;
+
+    @media (min-width: 850px) {
+      @include columns(8);
+
+      @include offset-left(2);
+    }
+  }
+
+  &__youtube {
+    display: block;
+    margin: 0 auto $gutter*2 auto;
+    width: 100%;
+    height: 20%;
+  }
+
+  &__text {
+    margin-bottom: $gutter * 2;
+
+    font-family: $font-main;
+    font-size: 1rem;
+    font-weight: normal;
+
+    &--paragraph {
+      margin-bottom: $gutter * 1.5;
+    }
+  }
+
+  &__quote {
+    margin-bottom: $gutter * 2;
+
+    font-family: $font-main;
+    font-size: 1rem;
+    font-weight: normal;
+
+    background-color: $color-4;
+
+    padding: $gutter;
+
+    &--text {
+      margin-bottom: $gutter;
+    }
+    
+    &--attribute {
+      font-style: italic;
+    }
+  }
+}
