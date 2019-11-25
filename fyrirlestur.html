@@ -3,8 +3,145 @@
 <head>
   <meta charset="utf-8">
   <title>Fyrirlestur</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto+Mono:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dist/styles.css">
+  <link rel="stylesheet" href="grid.css">
 </head>
 <body class="lecture-page">
+
+    <header class="header">
+      <div class="header__row">
+        <div class="header__container">
+          <div>
+            <img class="header__image" src="img/code.jpg" alt="Mynd í haus">
+          </div>
+          <div class="header__content">
+            <h3 class="header__undertitle"> HTML </h3>
+            <h1 class="header__title"> Sagan </h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="readLecture">
+      <div class="readLecture__row">
+
+        <div class="readLecture__col">
+          <iframe src="https://www.youtube.com/embed/-dC37AYntUQ" frameborder="0" allowfullscreen="0"></iframe>
+          <section class="readLecture__text">
+            <p class="readLecture__paragraph">
+                Frá örófi alda höfum við sagt hvort öðru sögur. Í fyrstu geymdar í minni einstaklinga, seinna skrifaðar á skinn eða pappír, síðan prentaðar með prentvél Gutenbergs og núna fjölfaldaðar í prentsmiðjum.
+            </p>
+            <p class="readLecture__paragraph">
+                Prentaður texti er í eðli sínu fastur. Við höfum blaðsíður í ákveðinni stærð sem textinn er prentaður á og eftir það eru engar breytingar mögulegar. En hvað ef svo væri ekki?
+            </p>
+            <p class="readLecture__paragraph">
+                Árið 1941 gaf Jorge Luis Borges út smásöguna „The Garden of Forking Paths” sem segir frá höfundi sem ætlar að skrifa stóra og flókna bók ásamt því að búa til stórt og flókið völundarhús. Síðar kemur í ljós að bókin og völundarhúsið er sami hluturinn en sagan lýsir heim þar sem allar mögulegar niðurstöður atburða eiga sér stað samtímis. Þessi smásaga er talin kynna fyrst hugmyndina um HyperText.
+            </p>
+            <p class="readLecture__paragraph">
+                Við lok seinna stríðs skrifaði Vennevar Bush greinina „As We May Think“ í Atlantic Monthly þar sem hann lýsir Memex. Memex er tæki sem leyfir einstakling að halda utan um sitt eigið safn af upplýsingum. Það leyfir flokkun, athugasemdir og tengingar við annað efni svo hægt sé að fletta upp og leita ásamt því að deila með öðrum á einfaldan hátt. Sannkallað töfratæki sem Bush gerði ráð fyrir að myndi gjörbreyta heiminum.
+            </p>
+          </section>
+          <blockquote class="readLecture__quote">
+            <p>The future is already here — it's just not very evenly distributed.</p>
+            William Gibson
+          </blockquote>
+          <section class="readLecture__text">
+            <p class="readLecture__paragraph">
+                Í kringum 1990 var Sir Tim Berners-Lee að vinna hjá CERN sem eðlisfræðingur. Hann skrifaði minnisblað um kerfi sem hann sá fyrir sér að myndi auka möguleika á samvinnu með því að deila skjölum á einfaldan hátt. Í framhaldinu skilgreindi hann HTML, t.d. í skjalinu „HTML Tags“ og skrifaði fyrsta vafrann og vefþjóninn sem túlkuðu og birtu HTML (skrifaður í Objective-C á NeXT tölvu). Fyrsta vefsíðan var síðan aðgengileg 23. ágúst 1991, og er enn aðgengileg á sömu slóð í dag.
+            </p>
+          </section>
+          <section class="readLecture__image">
+            <img src="img/server.jpg" alt="Mynd af server tölvu">
+            <caption class="readLecture__image--caption">
+              NeXT tölvan sem Tim Berners-Lee notaði til að skrifa fyrsta vefþjóninn og vafrann. Á tölvu er skrifað „This machine is a server DO NOT POWER DOWN!!“
+            </caption>
+          </section>
+          <h2 class="readLecture__heading"> Markup Language </h2>
+          <ul class="readLecture__list">
+            <li class="readLecture__list--item">
+              Lightweight – Einföld setningarfræði sem eykur læsileiki fyrir fólk
+            </li>
+            <li class="readLecture__list--item">
+              Presentational – WYSIWYG ritlar, markup falið fyrir notanda, t.d. Word
+            </li>
+            <li class="readLecture__list--item">
+              Procedural – markup innifalið í texta sem leiðbeiningar um aðgerðir á textann, t.d. LaTeX
+            </li>
+            <li class="readLecture__list--item">
+              Descriptive – markup gefur texta merkingu sem er óháður birtingu þess, t.d. HTML
+            </li>
+          </ul>
+          <code class="readLecture__code">
+              <p>### Markdown fyrirsögn</p>
+              <p></p>
+              <p>Texti sem inniheldur **feitletraðan** og</p>
+              <p>_skáletraðan_ texta</p>
+              <p>_skáletraðan_ texta</p>
+              <p>með [tengli](<a href="http://example.org">http://example.org</a>).</p>
+              <p></p>
+              <p>* Listi</p>
+              <p>* af</p>
+              <p>* orðum</p>
+          </code>
+          <h2 class="readLecture__heading"> HTML5 </h2>
+          <section class="readLecture__text">
+            <p class="readLecture__paragraph">
+              Eftir áhugaleysi W3C á því að þróa HTML áfam og mikinn fókus á XHTML og XML tengda tækni tóku nokkrir aðilar sig saman og stofnuðu WHATWG (Web Hypertext Application Technology Working Group) árið 2004, með það að markmiði að vinna áfram að HTML og eðlilegri framþróun vefsins. Þessi vinna fór fram undir nafninu HTML5 þar sem hver sem er gat lagt til breytingar á HTML í gegnum póstlista en takmarkaður hópur ritstjóra stýrði því hvað fór inn í staðal.
+            </p>
+            <p class="readLecture__paragraph">
+              Tveimur árum seinna, árið 2006, sá W3C að sér og hélt áfram þróun HTML sem HTML 5. En þar sem hver heilvita maður sér að þróun á tveim aðskildum stöðlum (HTML5 og HTML 5) á sama tíma virkar ekki, þá voru þeir blessunarlega sameinaðir í einn HTML5 staðal árið 2007. W3C hætti þróun á XHTML 2.0 árið 2009 og farið var að öllu að þróa HTML5 sem framtíð HTML.
+            </p>
+            <p class="readLecture__paragraph">
+              Árið 2012 tók W3C „snapshot“ af staðlinum eins og hann leit út hjá WHATWG og fór í þá vinnu að gera staðalinn að W3C staðli. WHATWG hætti hinsvegar að tala sérstaklega um HTML5 og vinnur nú að framþróun HTML í lifandi staðli sem mun aldrei klárast og heldur áfram að þróast án þess að hlutir séu fjarlægðir.
+            </p>
+            <p class="readLecture__paragraph">
+              HTML5 byggir hvorki á SGML né XML en er samhæft fyrri útgáfum (backwards compatible) af HTML. Stefnan er að auka samvirkni (interoperability) og aðgengi að vefnum. Til að vera að fullu samhæft fyrri útgáfum þarf HTML5 að skilgreina DocType:
+            </p>
+          </section>
+          <code class="readLecture__code">
+            <p>
+              &lt;!doctype html&gt;
+            </p>
+          </code>
+          <h2 class="readLecture__heading"> Minnsta HTML skjalið </h2>
+          <code class="readLecture__code">
+            <p>
+              &lt;!doctype html&gt;
+            </p>
+            <p>
+              &lt;html lang=\"is\"&gt;
+            </p>
+            <p>
+              &lt;head&gt;
+            </p>
+            <p>
+              &lt;meta charset=\"utf-8\"&gt;
+            </p>
+            <p>
+              &lt;title&gt;Halló heimur&lt;/title&gt;
+            </p>
+            <p>
+              &lt;/head&gt;
+            </p>
+            <p>
+            &lt;body&gt;
+            </p>
+            <p>
+              &lt;p&gt;Halló heimur&lt;/p&gt;
+            </p>
+            <p>
+              &lt;/body&gt;
+            </p>
+            <p>
+              &lt;/html&gt;
+            </p>
+          </code>
+        </div>
+
+      </div>
+    </div>
 
 </body>
 </html>
