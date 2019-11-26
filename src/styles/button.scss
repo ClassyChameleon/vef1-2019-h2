@@ -16,16 +16,14 @@
   text-decoration: none;
 
   cursor: pointer;
-  outline: none;
 
   background-color: $color-4;
-
   border: 1px solid $color-4;
   border-radius: 8px;
 
-  transition: 
-    background-color $transition,
-    border-color $transition;
+  outline: none;
+
+  transition: background-color $transition, border-color $transition;
 
   &:hover {
     background-color: $color-2;
@@ -36,13 +34,11 @@
     background-color: $color-5;
     border-color: $color-5;
 
-    transition: 
-      background-color $transition,
-      border-color $transition;
-    
-      &:hover {
-        background-color: $color-6;
-        border-color: $color-6;
-      }
+    transition: background-color $transition, border-color $transition;
+
+    &:hover {
+      background-color: $color-6;
+      border-color: $color-6;
+    }
   }
 }

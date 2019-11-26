@@ -1,8 +1,8 @@
 @import "config";
 
 .buttons {
-  margin: 0 auto $gutter*2 auto;
   max-width: $max-width;
+  margin: 0 auto $gutter*2 auto;
 
   @media (max-width: $max-width - 1) {
     padding-right: $gutter;

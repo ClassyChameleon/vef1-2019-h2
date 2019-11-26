@@ -27,9 +27,10 @@
   }
 
   &__buttons {
+    display: flex;
+
     margin-bottom: $gutter * 2;
 
-    display: flex;
     flex-direction: column;
     align-items: center;
   }
@@ -42,15 +43,16 @@
     font-family: $font-heading;
     font-size: 1rem;
     font-weight: normal;
-
     color: $color-1;
+
     text-align: center;
     text-decoration: none;
-    
+
+    cursor: pointer;
+
     background-color: transparent;
     border: transparent;
 
-    cursor: pointer;
     outline: none;
 
     &--link {

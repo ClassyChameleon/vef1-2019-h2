@@ -3,26 +3,27 @@
 .finished {
   display: flex;
   height: 100%;
-  flex-direction: column;
 
   cursor: pointer;
+
+  flex-direction: column;
 
   &:hover &__content {
     background-color: $color-2;
   }
 
   &__content {
-    height: inherit;
-    background-color: $color-4;
     display: flex;
     align-items: flex-end;
+    height: inherit;
+    background-color: $color-4;
 
     transition: background-color $transition;
   }
 
   &__text {
-    margin: 15px 0 15px 10px;
     width: 85%;
+    margin: 15px 0 15px 10px;
   }
 
   &__category {
@@ -39,8 +40,8 @@
   }
 
   &__sign {
-    color: $color-5;
-    font-size: 3rem;
     margin-bottom: 10px;
+    font-size: 3rem;
+    color: $color-5;
   }
 }
