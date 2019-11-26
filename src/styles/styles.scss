@@ -22,7 +22,6 @@ html { /* stylelint-disable-line */
 
 img { /* stylelint-disable-line */
   max-width: 100%;
-  opacity: 0.6;
 }
 
 // TODO import
@@ -33,3 +32,4 @@ img { /* stylelint-disable-line */
 @import "lectures";
 @import "finished";
 @import "readLecture";
+@import "readLectureType";
