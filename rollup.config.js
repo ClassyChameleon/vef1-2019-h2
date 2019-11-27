@@ -1,6 +1,4 @@
 import babel from 'rollup-plugin-babel';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
 
 module.exports = {
   input: './src/index.js',
@@ -17,7 +15,6 @@ module.exports = {
         ['@babel/preset-env', { targets: '> 0.25%, not dead' }],
       ],
     }),
-    uglify(),
   ],
 };
 /*module.exports = {
