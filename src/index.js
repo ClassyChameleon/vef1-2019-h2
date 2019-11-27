@@ -1,4 +1,4 @@
-//import List from './lib/list';
+import List from './lib/list';
 
 document.addEventListener('DOMContentLoaded', () => {
   const page = document.querySelector('body');
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (isLecturePage) {
 
   } else {
-    /*const list = new List();
-    list.load();*/
+    const list = new List();
+    list.load();
   }
 });
