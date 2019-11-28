@@ -1,3 +1,32 @@
+# Hópverkefni 2 - Verkefnalýsing
+
+Þegar verkefnið hefur verið klónað er hægt að ná í öll tól og tæki sem fylgja verkefninu með því að gefa skipunina `npm install` í skipanaglugga. Þegar það hefur verið gert þá er hægt að keyra verkefnið með skipuninni `npm run dev`. Þá opnast vefsíðan í netvafra.
+
+Vefsíðan hefur tvær síður, `index.html` og `fyrirlestur.html` en þær eru geymdar í rót verkefnis. `index.html` er forsíðan og þar er hægt að sjá yfirlit yfir alla fyrirlestra og hægt að sía út eftir tegund fyrirlesturs, HTML, CSS eða JavaScript. Þegar smellt er á fyrirlestur þá færist maður yfir á `fyrirlestur.html` þar sem efni fyrirlesturs er sýnt.
+
+Útlitið er unnið í scss skrám sem eru geymdar í `./src/styles`. 
+* `config.scss` hefur að geyma ýmsar skilgreindar breytur sem nýttar eru í öðrum scss skrám 
+* `styles.scss` geymir ýmsar grunnsstillingar og sækir allar scss skrár
+* `header.scss` stillir útlit hauss á bæði forsíðu og fyrirlestri
+* `buttons.scss` stillir útlit á tökkum á forsíðu
+* `button.scss` stillir útlit hvers og eins takka á forsíðu
+* `lectures.scss` stillir útlit forsíðu
+* `lecture.scss` stillir útlit á hverjum og einum ókláruðum fyrirlestri á forsíðu
+* `finished.scss` stillir útlit á hverjum og einum kláruðum fyrirlestri á forsíðu
+* `readLecture.scss` stillir útlit fyrirlestrar síðu
+* `readLectureType.scss` stillir útlit á hverju og einu type sem getur komið fyrir í fyrirlestri
+Þessar scss skrár eru svo þýddar yfir í eina css skrá sem heitir `styles.scss` og má finna í `./dist`.
+
+### hér þarf að bæta við hvernig JavaScript er sett upp í verkefninu
+
+Hægt er að athuga JavaScript stílbrotsvillur með því að keyra skipunina `npm run eslint`.
+Hægt er að athuga Sass stílbrotsvillur með því að keyra skipunina `npm run stylelint`.
+
+Þeir sem unnu að þessu verkefni eru:
+Árni Elmar Hrafnsson - aeh25@hi.is
+Gísli Veigar Gíslason - gvg8@hi.is 
+Sturla Páll Gunnarsson - spg6@hi.is
+
 # Hópverkefni 2
 
 Verkefnið felst í því að smíða prótótýpu af fyrirlestravef fyrir vefforritun. Gefin eru gögn sem unnin eru uppúr námsefni vetrarins.
