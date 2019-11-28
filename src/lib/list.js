@@ -1,19 +1,24 @@
 import { empty } from './helpers';
 
 export default function load() {
-  const htmlb = document.querySelector('.bhtml');
-  const cssb = document.querySelector('.bcss');
-  const javab = document.querySelector('.bjavascript');
-  htmlb.addEventListener('click',(e) => {
-    fyrirlestrar('bhtml');
-});
-cssb.addEventListener('click',(e) => {
-  fyrirlestrar('bcss');
-});
-  javab.addEventListener('click',(e) => {
-    fyrirlestrar('bjavascript');
-});
-  fyrirlestrar('start');
+  const isLecturePage = document.body.classList.contains('lecture-page');
+  if (!isLecturePage){
+    console.log('load ran');
+    localStorage.removeItem('fyrirlestur');
+    const htmlb = document.querySelector('.bhtml');
+    const cssb = document.querySelector('.bcss');
+    const javab = document.querySelector('.bjavascript');
+    htmlb.addEventListener('click',(e) => {
+      fyrirlestrar('bhtml');
+  });
+  cssb.addEventListener('click',(e) => {
+    fyrirlestrar('bcss');
+  });
+    javab.addEventListener('click',(e) => {
+      fyrirlestrar('bjavascript');
+  });
+    fyrirlestrar('start');
+  }
 }
 export function fyrirlestrar(type) {
   const htmlb = document.querySelector('.bhtml');
@@ -32,11 +37,9 @@ export function fyrirlestrar(type) {
         mainDisplay(result);
     })
     .catch(error => {console.log(`Villa með gögn ${error}`)})
-  if (type == 'start' || htmlb.classList.contains('button__clicked') && cssb.classList.contains('button__clicked') && javab.classList.contains('button__clicked')){
-    console.log(lectures);
-  }
 }
 export function mainDisplay(array){
+  const finished = window.localStorage('finished');
   empty(document.querySelector('.list'));
   const number = document.querySelectorAll('.button__clicked');
   for (let stuff of array.lectures){
@@ -44,7 +47,6 @@ export function mainDisplay(array){
       let colDiv = document.createElement('div');
       colDiv.setAttribute('class','lectures__col');
       let section = document.createElement('section');
-      section.setAttribute('class','lecture');
       let imgDiv = document.createElement('div');
       imgDiv.setAttribute('class','lecture__image');
       if (stuff.thumbnail != undefined){
@@ -62,6 +64,14 @@ export function mainDisplay(array){
       let title = document.createElement('h2');
       title.setAttribute('class','lecture__title');
       title.append(document.createTextNode(stuff.title));
+      section.setAttribute('class','lecture');
+      if (finished.length > 0){
+        for (let finish of finished){
+          if (finish == stuff.title){
+            section.setAttribute('class','finished');
+          }
+        }
+      }
       txtDiv.appendChild(category);
       txtDiv.appendChild(title);
       contDiv.appendChild(txtDiv);
@@ -69,6 +79,10 @@ export function mainDisplay(array){
       section.appendChild(contDiv);
       colDiv.appendChild(section);
       document.querySelector('.list').appendChild(colDiv);
+      colDiv.addEventListener('click',(e) => {
+        localStorage.setItem('fyrirlestur', JSON.stringify(stuff));
+        window.location = "fyrirlestur.html";
+      });
     }
   }
 }
@@ -89,14 +103,16 @@ export function toggle(item) {
     button.classList.add('button__clicked');
   }
 }
-export function lestur(type) {
-  const htmlb = document.querySelector('.bhtml');
-  const cssb = document.querySelector('.bcss');
-  const javab = document.querySelector('.bjavascript');
-  const lectures = fetch('../lectures.json');
-  if (type == 'start' || htmlb.classList.contains('button__clicked') && cssb.classList.contains('button__clicked') && javab.classList.contains('button__clicked')){
-    console.log(lectures);
-  }
+export function lestur() {
+  console.log('lestur keyrist');
+  const bigStuff = localStorage.getItem('fyrirlestur');
+  const stuff = JSON.parse(bigStuff);
+  document.querySelector('.header__image').setAttribute('src',stuff.thumbnail);
+  document.querySelector('.markFinish').addEventListener('click',(e) => {
+    localStorage.setItem('finished', stuff.title);
+    window.location = "index.html";
+  });
+
 }
 // pfft. þarf engan constructor.
   /*constructor() {
