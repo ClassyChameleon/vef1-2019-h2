@@ -1,5 +1,4 @@
-import load from './lib/list';
-import { lestur } from './lib/list';
+import { lestur, load } from './lib/list';
 
 document.addEventListener('DOMContentLoaded', () => {
   const page = document.querySelector('body');
