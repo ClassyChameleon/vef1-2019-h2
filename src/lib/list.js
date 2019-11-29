@@ -21,13 +21,13 @@ export function toggle(item) {
 function mainDisplay(array) {
   let done = false;
   const finished = window.localStorage.getItem('finished');
-  if (finished.includes('&&&')) {
+  if (finished && finished.includes('&&&')) {
     done = finished.split('&&&');
   }
   empty(document.querySelector('.list'));
   const number = document.querySelectorAll('.button__clicked');
 
-  for (let stuff of array.lectures) {
+  for (const stuff of array.lectures) {
     if (number.length === 0 || number.length === 3 || document.querySelector(`.b${stuff.category}`).classList.contains('button__clicked')) {
       const colDiv = document.createElement('div');
       colDiv.setAttribute('class', 'lectures__col');
@@ -53,15 +53,14 @@ function mainDisplay(array) {
       txtDiv.appendChild(category);
       txtDiv.appendChild(title);
       contDiv.appendChild(txtDiv);
-      if (finished == null) {
-      } else if (finished == stuff.slug) {
-          const completion = document.createElement('div');
-          completion.setAttribute('class','lecture__sign');
-          completion.append(document.createTextNode('✓'));
-          contDiv.appendChild(completion);
+      if (finished === stuff.slug) { //CHECK!!!!
+        const completion = document.createElement('div');
+        completion.setAttribute('class','lecture__sign');
+        completion.append(document.createTextNode('✓'));
+        contDiv.appendChild(completion);
       } else if (done) {
-        for (let finish of done) {
-          if (finish == stuff.slug) {
+        for (const finish of done) {
+          if (finish === stuff.slug) {
             const completion = document.createElement('div');
             completion.setAttribute('class','lecture__sign');
             completion.append(document.createTextNode('✓'));
@@ -121,7 +120,11 @@ export function lestur() {
   const stuff = JSON.parse(bigStuff);
   document.querySelector('.header__image').setAttribute('src', stuff.image);
   document.querySelector('.markFinish').addEventListener('click', () => {
-    localStorage.setItem('finished', localStorage.getItem('finished').concat('&&&', stuff.slug));
+    if (localStorage.getItem('finished') != null){
+      localStorage.setItem('finished', localStorage.getItem('finished').concat('&&&', stuff.slug));
+    } else {
+      localStorage.setItem('finished', ('&&&' + stuff.slug));
+    }
     window.location = 'index.html';
   });
   const parent = document.querySelector('.readLectureType');

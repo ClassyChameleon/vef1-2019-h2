@@ -5,10 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const isLecturePage = page.classList.contains('lecture-page');
 
   if (isLecturePage) {
-    console.log('lestur keyra');
     lestur();
   } else {
-    console.log('java is on');
     load();
   }
 });
