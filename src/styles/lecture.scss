@@ -22,6 +22,7 @@
   }
 
   &__text {
+    width: 85%;
     margin: 15px 0 15px 10px;
   }
 
@@ -36,5 +37,11 @@
     font-family: $font-heading;
     font-size: 2rem;
     font-weight: bold;
+  }
+
+  &__sign {
+    margin-bottom: 10px;
+    font-size: 3rem;
+    color: $color-5;
   }
 }

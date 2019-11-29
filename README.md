@@ -11,8 +11,7 @@ Vefsíðan hefur tvær síður, `index.html` og `fyrirlestur.html` en þær eru 
 * `buttons.scss` stillir útlit á tökkum á forsíðu
 * `button.scss` stillir útlit hvers og eins takka á forsíðu
 * `lectures.scss` stillir útlit forsíðu
-* `lecture.scss` stillir útlit á hverjum og einum ókláruðum fyrirlestri á forsíðu
-* `finished.scss` stillir útlit á hverjum og einum kláruðum fyrirlestri á forsíðu
+* `lecture.scss` stillir útlit á hverjum og einum fyrirlestri á forsíðu
 * `readLecture.scss` stillir útlit fyrirlestrar síðu
 * `readLectureType.scss` stillir útlit á hverju og einu type sem getur komið fyrir í fyrirlestri
 
