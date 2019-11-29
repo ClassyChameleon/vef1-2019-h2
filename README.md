@@ -24,7 +24,9 @@ Að auki eru tvær aðrar JavaScript skrár sem geymdar eru í `./src/lib`. Önn
 HTML skrárnar `index.html` og `fyrirlestur.html` vísa svo í `styles.css` fyrir útlit og í `bundle.js` fyrir `script`.
 
 Hægt er að athuga JavaScript stílbrotsvillur með því að keyra skipunina `npm run eslint`.
+`/* eslint-disable-line */` er notað á for-of lykkjur þar sem okkur fannst gott að nota þær í verkefninu og leyfilegt hefur verið í fyrri verkefnum að gera það.
 Hægt er að athuga Sass stílbrotsvillur með því að keyra skipunina `npm run stylelint`.
+Hægt er að athuga bæði í einu með því að gefa skipunina `npm run test`.
 
 Þeir sem unnu að þessu verkefni eru:
 Árni Elmar Hrafnsson - aeh25@hi.is

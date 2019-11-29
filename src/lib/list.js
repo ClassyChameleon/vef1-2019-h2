@@ -1,22 +1,4 @@
-import { empty } from './helpers';
-
-export function toggle(item) {
-  let button;
-  if (item === 'bhtml') {
-    button = document.querySelector('.bhtml');
-  } else if (item === 'bcss') {
-    button = document.querySelector('.bcss');
-  } else if (item === 'bjavascript') {
-    button = document.querySelector('.bjavascript');
-  } else {
-    return;
-  }
-  if (button.classList.contains('button__clicked')) {
-    button.classList.remove('button__clicked');
-  } else {
-    button.classList.add('button__clicked');
-  }
-}
+import { empty, toggle } from './helpers';
 
 function mainDisplay(array) {
   let done = false;
@@ -27,7 +9,7 @@ function mainDisplay(array) {
   empty(document.querySelector('.list'));
   const number = document.querySelectorAll('.button__clicked');
 
-  for (const stuff of array.lectures) {
+  for (const stuff of array.lectures) { /* eslint-disable-line */
     if (number.length === 0 || number.length === 3 || document.querySelector(`.b${stuff.category}`).classList.contains('button__clicked')) {
       const colDiv = document.createElement('div');
       colDiv.setAttribute('class', 'lectures__col');
@@ -55,14 +37,14 @@ function mainDisplay(array) {
       contDiv.appendChild(txtDiv);
       if (finished === stuff.slug) {
         const completion = document.createElement('div');
-        completion.setAttribute('class','lecture__sign');
+        completion.setAttribute('class', 'lecture__sign');
         completion.append(document.createTextNode('✓'));
         contDiv.appendChild(completion);
       } else if (done) {
-        for (const finish of done) {
+        for (const finish of done) { /* eslint-disable-line */
           if (finish === stuff.slug) {
             const completion = document.createElement('div');
-            completion.setAttribute('class','lecture__sign');
+            completion.setAttribute('class', 'lecture__sign');
             completion.append(document.createTextNode('✓'));
             contDiv.appendChild(completion);
           }
@@ -132,90 +114,90 @@ export function lestur() {
     window.location = 'index.html';
   });
   const parent = document.querySelector('.readLectureType');
-  for (let item of stuff.content) {
-    if (item.type == 'youtube') {
+  for (const item of stuff.content) { /* eslint-disable-line */
+    if (item.type === 'youtube') {
       const video = document.createElement('iframe');
-      video.setAttribute('class','readLectureType__youtube');
+      video.setAttribute('class', 'readLectureType__youtube');
       video.setAttribute('src', item.data);
-      video.setAttribute('frameborder','0');
-      video.setAttribute('allowfullscreen','0');
+      video.setAttribute('frameborder', '0');
+      video.setAttribute('allowfullscreen', '0');
       parent.appendChild(video);
     }
-    if (item.type == 'text') {
+    if (item.type === 'text') {
       const text = document.createElement('section');
-      text.setAttribute('class','readLectureType__text');
-      const textData = item.data.split('\n')
-      for (let ptext of textData) {
+      text.setAttribute('class', 'readLectureType__text');
+      const textData = item.data.split('\n');
+      for (const ptext of textData) { /* eslint-disable-line */
         const para = document.createElement('p');
-        para.setAttribute('class','readLectureType__text--paragraph');
+        para.setAttribute('class', 'readLectureType__text--paragraph');
         para.append(document.createTextNode(ptext));
         text.appendChild(para);
       }
       parent.appendChild(text);
     }
-    if (item.type == 'quote') {
+    if (item.type === 'quote') {
       const quote = document.createElement('blockquote');
-      quote.setAttribute('class','readLectureType__quote');
+      quote.setAttribute('class', 'readLectureType__quote');
       const para = document.createElement('p');
-      para.setAttribute('class','readLectureType__quote--text');
+      para.setAttribute('class', 'readLectureType__quote--text');
       para.append(document.createTextNode(item.data));
       quote.appendChild(para);
       const attribute = document.createElement('p');
-      attribute.setAttribute('class','readLectureType__quote--attribute');
+      attribute.setAttribute('class', 'readLectureType__quote--attribute');
       attribute.append(document.createTextNode(item.attribute));
       quote.appendChild(attribute);
       parent.appendChild(quote);
     }
-    if (item.type == 'image') {
+    if (item.type === 'image') {
       const img = document.createElement('section');
-      img.setAttribute('class','readLectureType__image');
+      img.setAttribute('class', 'readLectureType__image');
       const image = document.createElement('img');
-      image.setAttribute('src',item.data);
+      image.setAttribute('src', item.data);
       img.appendChild(image);
       const para = document.createElement('p');
-      para.setAttribute('class','readLectureType__image--caption');
+      para.setAttribute('class', 'readLectureType__image--caption');
       para.append(document.createTextNode(item.caption));
       img.appendChild(para);
       parent.appendChild(img);
     }
-    if (item.type == 'heading') {
+    if (item.type === 'heading') {
       const header = document.createElement('h2');
-      header.setAttribute('class','readLectureType__heading');
+      header.setAttribute('class', 'readLectureType__heading');
       header.append(document.createTextNode(item.data));
       parent.appendChild(header);
     }
-    if (item.type == 'list') {
+    if (item.type === 'list') {
       const united = document.createElement('ul');
-      united.setAttribute('class','readLectureType__list');
-      for (let thingy of item.data) {
+      united.setAttribute('class', 'readLectureType__list');
+      for (const thingy of item.data) { /* eslint-disable-line */
         const listy = document.createElement('li');
-        listy.setAttribute('class','readLectureType__list--item');
+        listy.setAttribute('class', 'readLectureType__list--item');
         listy.append(document.createTextNode(thingy));
         united.appendChild(listy);
       }
       parent.appendChild(united);
     }
-    if (item.type == 'code') {
+    if (item.type === 'code') {
       const code = document.createElement('code');
-      code.setAttribute('class','readLectureType__code');
+      code.setAttribute('class', 'readLectureType__code');
       const split = item.data.split('\n\n');
-      for (let mini of split) {
+      for (const mini of split) { /* eslint-disable-line */
         const bit = mini.split('\n');
-        if (bit.length == 1) {
+        if (bit.length === 1) {
           const codestuff = document.createElement('p');
-          codestuff.setAttribute('class','readLectureType__code--line--margin');
+          codestuff.setAttribute('class', 'readLectureType__code--line--margin');
           codestuff.append(document.createTextNode(bit));
           code.appendChild(codestuff);
         } else {
-          for (let i = 0; i < bit.length; i++) {
-            if (i + 1 == bit.length) {
+          for (let i = 0; i < bit.length; i += 1) {
+            if (i + 1 === bit.length) {
               const codestuff = document.createElement('p');
-              codestuff.setAttribute('class','readLectureType__code--line--margin');
+              codestuff.setAttribute('class', 'readLectureType__code--line--margin');
               codestuff.append(document.createTextNode(bit[i]));
               code.appendChild(codestuff);
             } else {
               const codestuff = document.createElement('p');
-              codestuff.setAttribute('class','readLectureType__code--line');
+              codestuff.setAttribute('class', 'readLectureType__code--line');
               codestuff.append(document.createTextNode(bit[i]));
               code.appendChild(codestuff);
             }
