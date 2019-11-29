@@ -15,9 +15,14 @@ Vefsíðan hefur tvær síður, `index.html` og `fyrirlestur.html` en þær eru 
 * `finished.scss` stillir útlit á hverjum og einum kláruðum fyrirlestri á forsíðu
 * `readLecture.scss` stillir útlit fyrirlestrar síðu
 * `readLectureType.scss` stillir útlit á hverju og einu type sem getur komið fyrir í fyrirlestri
+
 Þessar scss skrár eru svo þýddar yfir í eina css skrá sem heitir `styles.scss` og má finna í `./dist`.
 
-### hér þarf að bæta við hvernig JavaScript er sett upp í verkefninu
+Virknin og gögn eru sótt með JavaScript. Aðalskráin `index.js` má finna í `./src`. Hún kallar á föllin til að sækja gögnin eftir því hvort við séum á forsíðu eða á fyrirlestrasíðu.
+Að auki eru tvær aðrar JavaScript skrár sem geymdar eru í `./src/lib`. Önnur skráin er `helpers.js` sem geymir hjálparföll sem svo notuð eru í hinni skránni `list.js` en hún sér um að sækja gögn og birta samkvæmt réttu útliti.
+Þessar skrár eru svo þýddar með rollup og babel í eina skrá `bundle.js` og má finna í `./dist`.
+
+HTML skrárnar `index.html` og `fyrirlestur.html` vísa svo í `styles.css` fyrir útlit og í `bundle.js` fyrir `script`.
 
 Hægt er að athuga JavaScript stílbrotsvillur með því að keyra skipunina `npm run eslint`.
 Hægt er að athuga Sass stílbrotsvillur með því að keyra skipunina `npm run stylelint`.
