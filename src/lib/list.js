@@ -53,7 +53,7 @@ function mainDisplay(array) {
       txtDiv.appendChild(category);
       txtDiv.appendChild(title);
       contDiv.appendChild(txtDiv);
-      if (finished === stuff.slug) { //CHECK!!!!
+      if (finished === stuff.slug) {
         const completion = document.createElement('div');
         completion.setAttribute('class','lecture__sign');
         completion.append(document.createTextNode('✓'));
@@ -204,7 +204,7 @@ export function lestur() {
         if (bit.length == 1) {
           const codestuff = document.createElement('p');
           codestuff.setAttribute('class','readLectureType__code--line--margin');
-          codestuff.append(document.createTextNode(mini ));
+          codestuff.append(document.createTextNode(bit));
           code.appendChild(codestuff);
         } else {
           for (let i = 0; i < bit.length; i++) {
