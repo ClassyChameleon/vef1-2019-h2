@@ -21,13 +21,13 @@ export function toggle(item) {
 function mainDisplay(array) {
   let done = false;
   const finished = window.localStorage.getItem('finished');
-  if (finished.includes('&&&')){
+  if (finished.includes('&&&')) {
     done = finished.split('&&&');
   }
   empty(document.querySelector('.list'));
   const number = document.querySelectorAll('.button__clicked');
 
-  for (let stuff of array.lectures) { /* eslint-disable-line */
+  for (let stuff of array.lectures) {
     if (number.length === 0 || number.length === 3 || document.querySelector(`.b${stuff.category}`).classList.contains('button__clicked')) {
       const colDiv = document.createElement('div');
       colDiv.setAttribute('class', 'lectures__col');
@@ -54,14 +54,14 @@ function mainDisplay(array) {
       txtDiv.appendChild(title);
       contDiv.appendChild(txtDiv);
       if (finished == null) {
-      } else if (finished == stuff.title) {
+      } else if (finished == stuff.slug) {
           const completion = document.createElement('div');
           completion.setAttribute('class','lecture__sign');
           completion.append(document.createTextNode('✓'));
           contDiv.appendChild(completion);
       } else if (done) {
-        for (let finish of done) { /* eslint-disable-line */
-          if (finish == stuff.title){
+        for (let finish of done) {
+          if (finish == stuff.slug) {
             const completion = document.createElement('div');
             completion.setAttribute('class','lecture__sign');
             completion.append(document.createTextNode('✓'));
@@ -73,7 +73,7 @@ function mainDisplay(array) {
       section.appendChild(contDiv);
       colDiv.appendChild(section);
       document.querySelector('.list').appendChild(colDiv);
-      colDiv.addEventListener('click', () => { // eslint segir að e sé ekki notað
+      colDiv.addEventListener('click', () => {
         localStorage.setItem('fyrirlestur', JSON.stringify(stuff));
         window.location = 'fyrirlestur.html';
       });
@@ -99,18 +99,17 @@ export function fyrirlestrar(type) {
 export function load() {
   const isLecturePage = document.body.classList.contains('lecture-page');
   if (!isLecturePage) {
-    console.log('load ran');
     localStorage.removeItem('fyrirlestur');
     const htmlb = document.querySelector('.bhtml');
     const cssb = document.querySelector('.bcss');
     const javab = document.querySelector('.bjavascript');
-    htmlb.addEventListener('click', () => { // eslint segir að e sé ekki notað
+    htmlb.addEventListener('click', () => {
       fyrirlestrar('bhtml');
     });
-    cssb.addEventListener('click', () => { // eslint segir að e sé ekki notað
+    cssb.addEventListener('click', () => {
       fyrirlestrar('bcss');
     });
-    javab.addEventListener('click', () => { // eslint segir að e sé ekki notað
+    javab.addEventListener('click', () => {
       fyrirlestrar('bjavascript');
     });
     fyrirlestrar('start');
@@ -118,17 +117,16 @@ export function load() {
 }
 
 export function lestur() {
-  console.log('lestur keyrist');
   const bigStuff = localStorage.getItem('fyrirlestur');
   const stuff = JSON.parse(bigStuff);
   document.querySelector('.header__image').setAttribute('src', stuff.image);
-  document.querySelector('.markFinish').addEventListener('click', () => { // eslint segir að e sé ekki notað
-    localStorage.setItem('finished', localStorage.getItem('finished').concat('&&&', stuff.title));
+  document.querySelector('.markFinish').addEventListener('click', () => {
+    localStorage.setItem('finished', localStorage.getItem('finished').concat('&&&', stuff.slug));
     window.location = 'index.html';
   });
   const parent = document.querySelector('.readLectureType');
-  for (let item of stuff.content){
-    if (item.type == 'youtube'){
+  for (let item of stuff.content) {
+    if (item.type == 'youtube') {
       const video = document.createElement('iframe');
       video.setAttribute('class','readLectureType__youtube');
       video.setAttribute('src', item.data);
@@ -136,11 +134,11 @@ export function lestur() {
       video.setAttribute('allowfullscreen','0');
       parent.appendChild(video);
     }
-    if (item.type == 'text'){
+    if (item.type == 'text') {
       const text = document.createElement('section');
       text.setAttribute('class','readLectureType__text');
       const textData = item.data.split('\n')
-      for (let ptext of textData){
+      for (let ptext of textData) {
         const para = document.createElement('p');
         para.setAttribute('class','readLectureType__text--paragraph');
         para.append(document.createTextNode(ptext));
@@ -148,7 +146,7 @@ export function lestur() {
       }
       parent.appendChild(text);
     }
-    if (item.type == 'quote'){
+    if (item.type == 'quote') {
       const quote = document.createElement('blockquote');
       quote.setAttribute('class','readLectureType__quote');
       const para = document.createElement('p');
@@ -161,7 +159,7 @@ export function lestur() {
       quote.appendChild(attribute);
       parent.appendChild(quote);
     }
-    if (item.type == 'image'){
+    if (item.type == 'image') {
       const img = document.createElement('section');
       img.setAttribute('class','readLectureType__image');
       const image = document.createElement('img');
@@ -173,7 +171,7 @@ export function lestur() {
       img.appendChild(para);
       parent.appendChild(img);
     }
-    if (item.type == 'heading'){
+    if (item.type == 'heading') {
       const header = document.createElement('h2');
       header.setAttribute('class','readLectureType__heading');
       header.append(document.createTextNode(item.data));
@@ -182,13 +180,42 @@ export function lestur() {
     if (item.type == 'list') {
       const united = document.createElement('ul');
       united.setAttribute('class','readLectureType__list');
-      for (let thingy of item.data){
+      for (let thingy of item.data) {
         const listy = document.createElement('li');
         listy.setAttribute('class','readLectureType__list--item');
         listy.append(document.createTextNode(thingy));
         united.appendChild(listy);
       }
       parent.appendChild(united);
+    }
+    if (item.type == 'code') {
+      const code = document.createElement('code');
+      code.setAttribute('class','readLectureType__code');
+      const split = item.data.split('\n\n');
+      for (let mini of split) {
+        const bit = mini.split('\n');
+        if (bit.length == 1) {
+          const codestuff = document.createElement('p');
+          codestuff.setAttribute('class','readLectureType__code--line--margin');
+          codestuff.append(document.createTextNode(mini ));
+          code.appendChild(codestuff);
+        } else {
+          for (let i = 0; i < bit.length; i++) {
+            if (i + 1 == bit.length) {
+              const codestuff = document.createElement('p');
+              codestuff.setAttribute('class','readLectureType__code--line--margin');
+              codestuff.append(document.createTextNode(bit[i]));
+              code.appendChild(codestuff);
+            } else {
+              const codestuff = document.createElement('p');
+              codestuff.setAttribute('class','readLectureType__code--line');
+              codestuff.append(document.createTextNode(bit[i]));
+              code.appendChild(codestuff);
+            }
+          }
+        }
+      }
+      parent.appendChild(code);
     }
   }
 }
