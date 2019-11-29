@@ -19,10 +19,14 @@ export function toggle(item) {
 }
 
 function mainDisplay(array) {
+  let done = false;
   const finished = window.localStorage.getItem('finished');
-  console.log(finished);
+  if (finished.includes('&&&')){
+    done = finished.split('&&&');
+  }
   empty(document.querySelector('.list'));
   const number = document.querySelectorAll('.button__clicked');
+
   for (let stuff of array.lectures) { /* eslint-disable-line */
     if (number.length === 0 || number.length === 3 || document.querySelector(`.b${stuff.category}`).classList.contains('button__clicked')) {
       const colDiv = document.createElement('div');
@@ -46,20 +50,25 @@ function mainDisplay(array) {
       title.setAttribute('class', 'lecture__title');
       title.append(document.createTextNode(stuff.title));
       section.setAttribute('class', 'lecture');
-      if (finished == null) {
-      } else if (finished == stuff.title) {
-          section.setAttribute('class', 'finished');
-      } else {
-        for (let finish of finished) { /* eslint-disable-line */
-          console.log(finish);
-          if (finish == stuff.title){
-            section.setAttribute('class','finished');
-          }
-        }
-      }
       txtDiv.appendChild(category);
       txtDiv.appendChild(title);
       contDiv.appendChild(txtDiv);
+      if (finished == null) {
+      } else if (finished == stuff.title) {
+          const completion = document.createElement('div');
+          completion.setAttribute('class','lecture__sign');
+          completion.append(document.createTextNode('✓'));
+          contDiv.appendChild(completion);
+      } else if (done) {
+        for (let finish of done) { /* eslint-disable-line */
+          if (finish == stuff.title){
+            const completion = document.createElement('div');
+            completion.setAttribute('class','lecture__sign');
+            completion.append(document.createTextNode('✓'));
+            contDiv.appendChild(completion);
+          }
+        }
+      }
       section.appendChild(imgDiv);
       section.appendChild(contDiv);
       colDiv.appendChild(section);
@@ -73,8 +82,7 @@ function mainDisplay(array) {
 }
 
 export function fyrirlestrar(type) {
-  console.log(type);
-  //toggle(type);
+  toggle(type);
   fetch('../lectures.json')
     .then((result) => {
       if (!result.ok) {
@@ -115,7 +123,7 @@ export function lestur() {
   const stuff = JSON.parse(bigStuff);
   document.querySelector('.header__image').setAttribute('src', stuff.thumbnail);
   document.querySelector('.markFinish').addEventListener('click', (e) => { // eslint segir að e sé ekki notað
-    localStorage.setItem('finished', stuff.title);
+    localStorage.setItem('finished', localStorage.getItem('finished').concat('&&&', stuff.title));
     window.location = 'index.html';
   });
 }
