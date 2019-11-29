@@ -82,7 +82,7 @@ function mainDisplay(array) {
 
 export function fyrirlestrar(type) {
   toggle(type);
-  fetch('../lectures.json')
+  fetch('./lectures.json')
     .then((result) => {
       if (!result.ok) {
         throw new Error('Non 200 status');
