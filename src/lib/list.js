@@ -118,9 +118,13 @@ export function load() {
 export function lestur() {
   const bigStuff = localStorage.getItem('fyrirlestur');
   const stuff = JSON.parse(bigStuff);
-  document.querySelector('.header__image').setAttribute('src', stuff.image);
+  document.querySelector('.header__undertitle').append(document.createTextNode(stuff.category));
+  document.querySelector('.header__title').append(document.createTextNode(stuff.title));
+  if (stuff.image) {
+    document.querySelector('.header__image').setAttribute('src', stuff.image);
+  }
   document.querySelector('.markFinish').addEventListener('click', () => {
-    if (localStorage.getItem('finished') != null){
+    if (localStorage.getItem('finished') != null) {
       localStorage.setItem('finished', localStorage.getItem('finished').concat('&&&', stuff.slug));
     } else {
       localStorage.setItem('finished', ('&&&' + stuff.slug));
