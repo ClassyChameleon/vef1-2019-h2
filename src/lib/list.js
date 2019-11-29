@@ -73,7 +73,7 @@ function mainDisplay(array) {
       section.appendChild(contDiv);
       colDiv.appendChild(section);
       document.querySelector('.list').appendChild(colDiv);
-      colDiv.addEventListener('click', (e) => { // eslint segir að e sé ekki notað
+      colDiv.addEventListener('click', () => { // eslint segir að e sé ekki notað
         localStorage.setItem('fyrirlestur', JSON.stringify(stuff));
         window.location = 'fyrirlestur.html';
       });
@@ -104,13 +104,13 @@ export function load() {
     const htmlb = document.querySelector('.bhtml');
     const cssb = document.querySelector('.bcss');
     const javab = document.querySelector('.bjavascript');
-    htmlb.addEventListener('click', (e) => { // eslint segir að e sé ekki notað
+    htmlb.addEventListener('click', () => { // eslint segir að e sé ekki notað
       fyrirlestrar('bhtml');
     });
-    cssb.addEventListener('click', (e) => { // eslint segir að e sé ekki notað
+    cssb.addEventListener('click', () => { // eslint segir að e sé ekki notað
       fyrirlestrar('bcss');
     });
-    javab.addEventListener('click', (e) => { // eslint segir að e sé ekki notað
+    javab.addEventListener('click', () => { // eslint segir að e sé ekki notað
       fyrirlestrar('bjavascript');
     });
     fyrirlestrar('start');
@@ -121,9 +121,74 @@ export function lestur() {
   console.log('lestur keyrist');
   const bigStuff = localStorage.getItem('fyrirlestur');
   const stuff = JSON.parse(bigStuff);
-  document.querySelector('.header__image').setAttribute('src', stuff.thumbnail);
-  document.querySelector('.markFinish').addEventListener('click', (e) => { // eslint segir að e sé ekki notað
+  document.querySelector('.header__image').setAttribute('src', stuff.image);
+  document.querySelector('.markFinish').addEventListener('click', () => { // eslint segir að e sé ekki notað
     localStorage.setItem('finished', localStorage.getItem('finished').concat('&&&', stuff.title));
     window.location = 'index.html';
   });
+  const parent = document.querySelector('.readLectureType');
+  for (let item of stuff.content){
+    if (item.type == 'youtube'){
+      const video = document.createElement('iframe');
+      video.setAttribute('class','readLectureType__youtube');
+      video.setAttribute('src', item.data);
+      video.setAttribute('frameborder','0');
+      video.setAttribute('allowfullscreen','0');
+      parent.appendChild(video);
+    }
+    if (item.type == 'text'){
+      const text = document.createElement('section');
+      text.setAttribute('class','readLectureType__text');
+      const textData = item.data.split('\n')
+      for (let ptext of textData){
+        const para = document.createElement('p');
+        para.setAttribute('class','readLectureType__text--paragraph');
+        para.append(document.createTextNode(ptext));
+        text.appendChild(para);
+      }
+      parent.appendChild(text);
+    }
+    if (item.type == 'quote'){
+      const quote = document.createElement('blockquote');
+      quote.setAttribute('class','readLectureType__quote');
+      const para = document.createElement('p');
+      para.setAttribute('class','readLectureType__quote--text');
+      para.append(document.createTextNode(item.data));
+      quote.appendChild(para);
+      const attribute = document.createElement('p');
+      attribute.setAttribute('class','readLectureType__quote--attribute');
+      attribute.append(document.createTextNode(item.attribute));
+      quote.appendChild(attribute);
+      parent.appendChild(quote);
+    }
+    if (item.type == 'image'){
+      const img = document.createElement('section');
+      img.setAttribute('class','readLectureType__image');
+      const image = document.createElement('img');
+      image.setAttribute('src',item.data);
+      img.appendChild(image);
+      const para = document.createElement('p');
+      para.setAttribute('class','readLectureType__image--caption');
+      para.append(document.createTextNode(item.caption));
+      img.appendChild(para);
+      parent.appendChild(img);
+    }
+    if (item.type == 'heading'){
+      const header = document.createElement('h2');
+      header.setAttribute('class','readLectureType__heading');
+      header.append(document.createTextNode(item.data));
+      parent.appendChild(header);
+    }
+    if (item.type == 'list') {
+      const united = document.createElement('ul');
+      united.setAttribute('class','readLectureType__list');
+      for (let thingy of item.data){
+        const listy = document.createElement('li');
+        listy.setAttribute('class','readLectureType__list--item');
+        listy.append(document.createTextNode(thingy));
+        united.appendChild(listy);
+      }
+      parent.appendChild(united);
+    }
+  }
 }
