@@ -18,8 +18,9 @@ export function toggle(item) {
   }
 }
 
-export function mainDisplay(array) {
-  const finished = window.localStorage('finished');
+function mainDisplay(array) {
+  const finished = window.localStorage.getItem('finished');
+  console.log(finished);
   empty(document.querySelector('.list'));
   const number = document.querySelectorAll('.button__clicked');
   for (let stuff of array.lectures) { /* eslint-disable-line */
@@ -45,10 +46,14 @@ export function mainDisplay(array) {
       title.setAttribute('class', 'lecture__title');
       title.append(document.createTextNode(stuff.title));
       section.setAttribute('class', 'lecture');
-      if (finished.length > 0) {
+      if (finished == null) {
+      } else if (finished == stuff.title) {
+          section.setAttribute('class', 'finished');
+      } else {
         for (let finish of finished) { /* eslint-disable-line */
-          if (finish === stuff.title) {
-            section.setAttribute('class', 'finished');
+          console.log(finish);
+          if (finish == stuff.title){
+            section.setAttribute('class','finished');
           }
         }
       }
@@ -68,11 +73,8 @@ export function mainDisplay(array) {
 }
 
 export function fyrirlestrar(type) {
-  const htmlb = document.querySelector('.bhtml'); // eslint segir ekki notað
-  const cssb = document.querySelector('.bcss'); // eslint segir ekki notað
-  const javab = document.querySelector('.bjavascript'); // eslint segir ekki notað
-  toggle(type);
-  const lectures = fetch('../lectures.json'); // eslint segir ekki notað
+  console.log(type);
+  //toggle(type);
   fetch('../lectures.json')
     .then((result) => {
       if (!result.ok) {
@@ -86,7 +88,7 @@ export function fyrirlestrar(type) {
     .catch((error) => { console.log(`Villa með gögn ${error}`); });
 }
 
-export default function load() {
+export function load() {
   const isLecturePage = document.body.classList.contains('lecture-page');
   if (!isLecturePage) {
     console.log('load ran');
